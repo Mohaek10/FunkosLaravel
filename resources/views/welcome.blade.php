@@ -6,6 +6,9 @@
 
         <title>Laravel</title>
 
+        <!-- Image -->
+        <meta property="og:image" content="https://shop.mancity.com/dw/image/v2/BDWJ_PRD/on/demandware.static/-/Sites-master-catalog-MAN/default/dw0415c164/images/large/701225807002_pp_01_mcfc.png?sw=1600&sh=1600&sm=fit">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
