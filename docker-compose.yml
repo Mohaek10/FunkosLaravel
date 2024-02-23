@@ -48,6 +48,18 @@ services:
                 - '${DB_USERNAME}'
             retries: 3
             timeout: 5s
+
+    adminer-postgres:
+        container_name: adminer-postgres
+        image: 'adminer:latest'
+        env_file:
+            -   .env
+        ports:
+            - 8081:8080
+        depends_on:
+            - pgsql
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
