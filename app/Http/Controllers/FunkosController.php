@@ -10,8 +10,19 @@ class FunkosController extends Controller
 {
     public function index(Request $request)
     {
-        $funkos = Funko::search($request->search)->orderBy('id', 'asc')->isDeleted()->paginate(2);
+        $funkos = Funko::search($request->search)->orderBy('id', 'asc')->isDeleted()->paginate(10);
         return view('funkos.index')->with('funkos', $funkos);
+    }
+
+    public function show($id)
+    {
+        //Validamos el id
+        if (!is_numeric($id)) {
+            flash('El id no es válido')->error()->important();
+            return redirect()->back();
+        }
+        $funko = Funko::find($id);
+        return view('funkos.show')->with('funko', $funko);
     }
 
     public function rules()
@@ -33,22 +44,16 @@ class FunkosController extends Controller
             $funko = new Funko($request->all());
             $funko->save();
             flash('Funko ' . $funko->nombre . ' creado correctamente.')->success()->important();
-            return $funko->toJson();
+            return redirect()->route('funkos.index');
         } catch (Exception $e) {
             flash('Error al crear el funko ' . $e->getMessage())->error()->important();
             return redirect()->back();
         }
     }
 
-    public function create($id)
+    public function create()
     {
-        return $funko = Funko::find($id);
-    }
-
-    public function show($id)
-    {
-        $funko = Funko::find($id);
-        return view('funkos.detales')->with('funko', $funko);
+        return view('funkos.create');
     }
 
     public function edit($id)

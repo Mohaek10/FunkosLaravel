@@ -16,11 +16,13 @@
 <body>
 
 @include('header')
-@include('flash::message')
-<main class="main flow">
-    <div class="container">
 
-    @yield('content')
+<div class=" mx-2 my-2">
+    @include('flash::message')
+</div>
+<main class="main flow mt-3">
+    <div class="container">
+        @yield('content')
     </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -56,8 +58,6 @@
         background-color: #212121;
         color: #ddd;
     }
-
-
 
 
     .card {
@@ -106,6 +106,7 @@
         font-size: 1rem;
         font-weight: 600;
     }
+
     .ctaB {
         display: block;
         align-self: end;
@@ -133,7 +134,6 @@
     }
 
 </style>
-
 <script>
     console.clear();
 
@@ -184,6 +184,4 @@
 
 </script>
 </body>
-
-
 </html>

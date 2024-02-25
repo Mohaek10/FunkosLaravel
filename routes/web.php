@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 
 Route::resource('funkos', FunkosController::class);
+//Detalle de un funko

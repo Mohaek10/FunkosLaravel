@@ -16,7 +16,7 @@
                             <p class="card-text">Categoria: {{$funko->categoria}}</p>
                             <p class="card-text">Precio: {{$funko->precio}}€</p>
                             <p class="card-text">Cantidad: {{$funko->cantidad}}</p>
-                            <a href="{{url( 'detalles', ['id' => $funko->id ]) }}" class="card__cta cta">Ver
+                            <a href="{{url( 'funkos', ['id' => $funko->id ]) }}" class="card__cta cta">Ver
                                 más</a>
                             <div class="row">
                                 <div class="col-md-6 ">
@@ -47,7 +47,7 @@
     </div>
     {{--Paginación de funkos--}}
     {{$funkos->links()}}
-    <a href="{{url('crear')}}" class="btn btn-primary">Crear</a>
+    <a href="{{route('funkos.create')}}" class="btn btn-primary">Crear</a>
 
 @endsection
 
