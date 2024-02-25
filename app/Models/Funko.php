@@ -29,7 +29,7 @@ class Funko extends Model
     }
 
     public function scopeSearch($query, $search){
-        return $query->where('nombre', 'LIKE', "%$search%");
+        return $query->whereRaw('LOWER(nombre) like ? ', ["%".strtolower($search)."%"]);
     }
 
     public function scopeCategory($query, $category){

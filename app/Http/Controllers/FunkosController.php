@@ -10,8 +10,8 @@ class FunkosController extends Controller
 {
     public function index(Request $request)
     {
-        $funkos = Funko::search($request->search)->orderBy('id', 'desc')->isDeleted()->paginate(10);
-        return response()->json($funkos);
+        $funkos = Funko::search($request->search)->orderBy('id', 'asc')->isDeleted()->paginate(2);
+        return view('funkos.index')->with('funkos', $funkos);
     }
 
     public function rules()
@@ -48,7 +48,7 @@ class FunkosController extends Controller
     public function show($id)
     {
         $funko = Funko::find($id);
-        return $funko->toJson();
+        return view('funkos.detales')->with('funko', $funko);
     }
 
     public function edit($id)
