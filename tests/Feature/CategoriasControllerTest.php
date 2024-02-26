@@ -37,12 +37,49 @@ class CategoriasControllerTest extends TestCase
         $response->assertViewIs('categorias.create');
     }
 
-    public function test_devuelve_edit()
+    //Test para crear funkos
+    /*
+     * public function store(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'min:3|max:100|required',
+        ]);
+        try {
+            //comprobar que el nombre no exista
+            $categoria = Categoria::where('nombre', $request->nombre)->first();
+            if ($categoria) {
+                flash('La categoria ' . $request->nombre . ' ya existe.')->error()->important();
+                return redirect()->back();
+            }
+            $categoria = new Categoria($request->all());
+            $categoria->save();
+            flash('Categoria ' . $categoria->nombre . ' creada correctamente.')->success()->important();
+            return redirect()->route('categorias.index');
+        } catch (Exception $e) {
+            flash('Error al crear la categoria ' . $e->getMessage())->error()->important();
+            return redirect()->back();
+        }
+    }
+     *
+     * */
+    public function test_crear_categoria()
     {
         $admin = User::factory()->create(['role' => 'admin']);
         $this->actingAs($admin);
-        $categoria = Categoria::first();
-        $response = $this->get('/categorias/' . $categoria->id . '/edit');
-        $response->assertViewIs('categorias.edit');
+        $response = $this->post('/categorias', ['nombre' => 'categoria de prueba']);
+        $response->assertRedirect('/categorias');
+        $this->assertDatabaseHas('categorias', ['nombre' => 'categoria de prueba']);
     }
+
+    public function test_crear_categoria_no_admin()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+        $response = $this->post('/categorias', ['nombre' => 'categoria de prueba']);
+        $response->assertStatus(302);
+        $response->assertRedirect('/home');
+        $this->assertDatabaseMissing('categorias', ['nombre' => 'categoria de prueba']);
+    }
+
+
 }
