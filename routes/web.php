@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', 'App\Http\Controllers\FunkosController@index')->name('funkos.index');
 
-Route::get('/', function () {
-    return redirect()->route('funkos.index');
-});
 
 
 /*

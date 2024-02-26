@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Funko extends Model
 {
+    //factory
+    use HasFactory;
+
     public static string $IMAGE_DEFAULT = 'https://via.placeholder.com/150';
     protected $table = 'funkos';
 
