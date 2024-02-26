@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\FunkosController@index')->name('funkos.index');
 
 
-
 /*
 Route::get('funkos/{id}/image', [FunkosController::class, 'editImagen'])->name('funkos.editImagen');
 Route::patch('funkos/{id}/image', [FunkosController::class,'actualizarImagen'])->name('funkos.actualizarImagen');
@@ -40,13 +39,20 @@ Route::group(['prefix' => 'funkos'], function () {
     Route::put('/{id}', [FunkosController::class, 'update'])->name('funkos.update')->middleware('auth', 'admin');
     Route::delete('/{id}', [FunkosController::class, 'destroy'])->name('funkos.destroy')->middleware('auth', 'admin');
     Route::get('/{id}/image', [FunkosController::class, 'editImagen'])->name('funkos.editImagen')->middleware('auth', 'admin');
-    Route::patch('/{id}/image', [FunkosController::class,'actualizarImagen'])->name('funkos.actualizarImagen')->middleware('auth', 'admin');
+    Route::patch('/{id}/image', [FunkosController::class, 'actualizarImagen'])->name('funkos.actualizarImagen')->middleware('auth', 'admin');
 
+});
+
+Route::group(['prefix' => 'categorias'], function () {
+    Route::get('/', [App\Http\Controllers\CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/create', [App\Http\Controllers\CategoriaController::class, 'create'])->name('categorias.create')->middleware('auth', 'admin');
+    Route::post('/', [App\Http\Controllers\CategoriaController::class, 'store'])->name('categorias.store')->middleware('auth', 'admin');
+    Route::get('/{id}', [App\Http\Controllers\CategoriaController::class, 'show'])->name('categorias.show');
+    Route::delete('/{id}', [App\Http\Controllers\CategoriaController::class, 'destroy'])->name('categorias.destroy')->middleware('auth', 'admin');
 });
 
 
 Auth::routes();
-
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

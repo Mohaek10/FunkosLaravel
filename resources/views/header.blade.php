@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="nav-item text-center mx-2 mx-lg-1">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('categorias.index') }}">
                         Categorias
                     </a>
                 </li>

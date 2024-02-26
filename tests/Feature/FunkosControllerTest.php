@@ -17,6 +17,7 @@ class FunkosControllerTest extends TestCase
 {
     protected function setUp(): void
     {
+        //para que se ejecute la migracion y el seeder en base de datos de prueba y no en la real
         parent::setUp();
         $this->artisan('migrate:fresh'); //poner fresh para que no haya problemas con la migracion y la semilla
         $this->artisan('db:seed'); //para que se ejecute el seeder

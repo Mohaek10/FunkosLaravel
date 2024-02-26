@@ -16,6 +16,11 @@ class Categoria extends Model
 
     }
 
+    public function scopeIsDeleted($query)
+    {
+        return $query->where('isDeleted', false);
+    }
+
     public static function getNombrePorId($id)
     {
         $categoria = self::find($id);
@@ -27,7 +32,15 @@ class Categoria extends Model
         return self::all()->pluck('nombre');
     }
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','idDeleted'];
+
+    public $timestamps = true;
+
+    protected $hidden = ['isDeleted'];
+
+    protected $casts = [
+        'isDeleted' => 'boolean',
+    ];
 
     public function funkos(){
         return $this->hasMany(Funko::class);
