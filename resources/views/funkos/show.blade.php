@@ -5,7 +5,11 @@
 @section('content')
     <div class="row">
         <div class="col-md-4">
-            <img src="{{Funko::$IMAGE_DEFAULT}}" class="img-fluid rounded shadow" alt="imagen">
+            @if($funko->imagen != Funko::$IMAGE_DEFAULT)
+                <img src="{{ asset('storage/' . $funko->imagen) }}" class="img-fluid" alt="Imagen">
+            @else
+                <img src="{{Funko::$IMAGE_DEFAULT}}" class="img-fluid" alt="Imagen">
+            @endif
         </div>
         <div class="col-md-8">
             <h2><?php echo htmlspecialchars($funko->nombre) ?></h2>

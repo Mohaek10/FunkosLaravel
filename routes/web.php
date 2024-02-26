@@ -20,4 +20,16 @@ Route::get('/', function () {
 
 
 Route::resource('funkos', FunkosController::class);
+
+Route::get('funkos/{id}/image', [FunkosController::class, 'editImagen'])->name('funkos.editImagen');
+Route::patch('funkos/{id}/image', [FunkosController::class,'actualizarImagen'])->name('funkos.actualizarImagen');
+
+// Route::get('/funkos', [FunkosController::class, 'index'])->name('funkos.index');
+// Route::get('/funkos/create', [FunkosController::class, 'create'])->name('funkos.create');
+// Route::post('/funkos', [FunkosController::class, 'store'])->name('funkos.store');
+// Route::get('/funkos/{id}', [FunkosController::class, 'show'])->name('funkos.show');
+// Route::get('/funkos/{id}/edit', [FunkosController::class, 'edit'])->name('funkos.edit');
+// Route::put('/funkos/{id}', [FunkosController::class, 'update'])->name('funkos.update');
+// Route::delete('/funkos/{id}', [FunkosController::class, 'destroy'])->name('funkos.destroy');
+
 //Detalle de un funko

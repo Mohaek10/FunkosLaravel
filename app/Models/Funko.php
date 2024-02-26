@@ -16,10 +16,11 @@ class Funko extends Model
         'imagen',
         'cantidad',
         'categoria',
-        'created_at',
-        'updated_at',
         'isDeleted',
     ];
+
+    public $timestamps = true;
+
 
     protected $hidden =[
         'isDeleted',

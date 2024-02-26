@@ -41,6 +41,13 @@ class FunkosSeeder extends Seeder
             'categoria' => 'Sin Categoria',
             'isDeleted' => false,
         ]);
+        Funko::create([
+            'nombre' => 'Messi',
+            'precio' => 99900,
+            'cantidad' => 90,
+            'categoria' => 'Sin Categoria',
+            'isDeleted' => false,
+        ]);
 
 
     }
