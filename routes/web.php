@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 
-Route::resource('funkos', FunkosController::class);
 /*
 Route::get('funkos/{id}/image', [FunkosController::class, 'editImagen'])->name('funkos.editImagen');
 Route::patch('funkos/{id}/image', [FunkosController::class,'actualizarImagen'])->name('funkos.actualizarImagen');
@@ -49,5 +48,7 @@ Route::group(['prefix' => 'funkos'], function () {
 
 
 Auth::routes();
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

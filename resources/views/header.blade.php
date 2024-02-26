@@ -1,7 +1,7 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
     <a class="navBar-brand" href="{{url('funkos')}}">
-        <img src="{{asset('images/logo.jpg')}}" alt="FunkoLandia" width="50" height="50" class="d-inline-block align-text-top" style="border-radius: 50%">
+        <img src="{{asset('images/logo.jpg')}}" alt="FunkoLandia" width="50" height="50"
+             class="d-inline-block align-text-top" style="border-radius: 50%">
     </a>
     <div class="container-fluid">
         <a class="navbar-brand" href="{{url('funkos')}}">FunkoLandia</a>
@@ -25,10 +25,41 @@
                     </a>
                 </li>
             </ul>
+            <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+                @auth
+                    <li class="nav-item text-center mx-2 mx-lg-1">
+                        <a class="nav-link" href="#">
+                            {{ Auth::user()->name }}
+                        </a>
+                    </li>
+                    <li class="nav-item text-center mx-2 mx-lg-1">
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                @endauth
 
-            <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0" action="{{route('funkos.index')}}" method="get">
-                <input id="search" name="search" type="text" class="form-control" placeholder="Buscar" aria-label="Search" />
-                <button class="btn btn-outline-primary" type="submit" >
+                @guest
+                    <li class="nav-item text-center mx-2 mx-lg-1">
+                        <a class="nav-link" href="{{ route('login') }}">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                    <li class="nav-item text-center mx-2 mx-lg-1">
+                        <a class="nav-link" href="{{ route('register') }}">
+                            Registrarse                        </a>
+                    </li>
+                @endguest
+            </ul>
+            <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0" action="{{route('funkos.index')}}"
+                  method="get">
+                <input id="search" name="search" type="text" class="form-control" placeholder="Buscar"
+                       aria-label="Search"/>
+                <button class="btn btn-outline-primary" type="submit">
                     Search
                 </button>
             </form>
@@ -50,6 +81,7 @@
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         background: linear-gradient(to right, rgba(43, 45, 129, 1), rgb(134, 7, 7))
     }
+
     nav {
         --flow-space: 0.5em;
         --hsl: var(--hue), var(--saturation), var(--lightness);

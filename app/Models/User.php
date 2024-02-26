@@ -34,6 +34,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+
     /**
      * The attributes that should be cast.
      *
@@ -43,4 +45,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Comprobar si es admin
+    public static function  isAdmin(): bool
+    {
+        return auth()->user()->role === 'admin';
+    }
 }
