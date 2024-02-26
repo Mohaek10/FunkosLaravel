@@ -15,7 +15,7 @@ class Funko extends Model
         'precio',
         'imagen',
         'cantidad',
-        'categoria',
+        'categoria_id',
         'isDeleted',
     ];
 
@@ -44,5 +44,9 @@ class Funko extends Model
 
     public function scopePrice($query, $price){
         return $query->where('precio', '>=', $price);
+    }
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
     }
 }
