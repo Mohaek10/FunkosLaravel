@@ -37,11 +37,9 @@
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Categoria</label>
                     <select class="form-select" id="categoria" name="categoria">
-                        <option value="">Selecciona una categoria</option>
-                        <option value="anime">Anime</option>
-                        <option value="videojuegos">Videojuegos</option>
-                        <option value="series">Series</option>
-                        <option value="peliculas">Peliculas</option>
+                        @foreach($categorias as $categoria)
+                            <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Crear</button>

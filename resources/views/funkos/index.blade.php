@@ -19,7 +19,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$funko->nombre}} </h5>
                             <span class="badge bg-primary">ID: {{$funko->id}}</span>
-                            <p class="card-text">Categoria: {{$funko->categoria}}</p>
+                            <p class="card-text">Categoria: {{$funko->categoria->nombre}}</p>
                             <p class="card-text">Precio: {{$funko->precio}}€</p>
                             <p class="card-text">Cantidad: {{$funko->cantidad}}</p>
                             <a href="{{route( 'funkos.show', $funko->id )}}" class="card__cta cta">Ver

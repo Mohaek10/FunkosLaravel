@@ -15,7 +15,7 @@
             <h2><?php echo htmlspecialchars($funko->nombre) ?></h2>
             <div class="details">
                 <p><strong>ID:</strong> <?php echo htmlspecialchars($funko->id); ?></p>
-                <p><strong>Categoria:</strong> <?php echo htmlspecialchars($funko->categoria); ?></p>
+                <p><strong>Categoria:</strong> <?php echo htmlspecialchars($funko->categoria->nombre); ?></p>
                 <p><strong>Precio:</strong> <?php echo htmlspecialchars($funko->precio); ?></p>
                 <p><strong>Cantidad:</strong> <?php echo htmlspecialchars($funko->cantidad); ?></p>
                 <p><strong>Fecha de creación:</strong> <?php echo htmlspecialchars($funko->created_at); ?></p>

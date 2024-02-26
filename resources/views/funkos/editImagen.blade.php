@@ -19,7 +19,7 @@
         <dt class="col-sm-2">Nombre:</dt>
         <dd class="col-sm-10">{{$funko->nombre}}</dd>
         <dt class="col-sm-2">Categoria:</dt>
-        <dd class="col-sm-10">{{$funko->categoria}}</dd>
+        <dd class="col-sm-10">{{$funko->categoria->nombre}}</dd>
         <dt class="col-sm-2">Precio:</dt>
         <dd class="col-sm-10">{{$funko->precio}}€</dd>
         <dt class="col-sm-2">Cantidad:</dt>

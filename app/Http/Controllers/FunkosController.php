@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Funko;
 use Exception;
@@ -33,7 +34,7 @@ class FunkosController extends Controller
             'nombre' => 'min:3|max:100|required',
             'precio' => 'numeric|required',
             'cantidad' => 'integer|required',
-            'categoria' => 'min:3|max:100|required',
+            'categoria' => 'required',
         ];
     }
 
@@ -44,6 +45,9 @@ class FunkosController extends Controller
         );
         try {
             $funko = new Funko($request->all());
+
+            $funko->categoria_id = $request->categoria;
+
             $funko->save();
             flash('Funko ' . $funko->nombre . ' creado correctamente.')->success()->important();
             return redirect()->route('funkos.index');
@@ -55,7 +59,8 @@ class FunkosController extends Controller
 
     public function create()
     {
-        return view('funkos.create');
+        $categorias = Categoria::all();
+        return view('funkos.create')->with('categorias', $categorias);
     }
 
     public function edit($id)
@@ -65,7 +70,8 @@ class FunkosController extends Controller
             return redirect()->back();
         }
         $funko = Funko::find($id);
-        return view('funkos.edit')->with('funko', $funko);
+        $categorias = Categoria::all();
+        return view('funkos.edit')->with('funko', $funko)->with('categorias', $categorias);
     }
 
     public function update(Request $request, $id)
