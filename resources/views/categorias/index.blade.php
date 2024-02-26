@@ -11,12 +11,10 @@
         @if(count($categorias)>0)
             @foreach($categorias as $categoria)
                 <div class="col-md-4 mb-3">
-                    <div class="card cards card">
+                    <div class="card ">
                         <div class="card-body">
                             <h5 class="card-title">{{$categoria->nombre}} </h5>
                             <span class="badge bg-primary">ID: {{$categoria->id}}</span>
-                            <a href="{{route( 'categorias.show', $categoria->id )}}" class="card__cta cta">Ver
-                                más</a>
                             @auth
                                 @if(User::isAdmin())
                                     <div class="row">
@@ -83,5 +81,11 @@
             });
         });
     </script>
+
+    <style>
+        .card {
+            width: 18rem;
+        }
+    </style>
 
 @endsection

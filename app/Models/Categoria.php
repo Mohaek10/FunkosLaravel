@@ -27,6 +27,7 @@ class Categoria extends Model
         return $categoria ? $categoria->nombre : null;
     }
 
+
     public static function getNombres()
     {
         return self::all()->pluck('nombre');

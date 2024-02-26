@@ -53,4 +53,9 @@ class Funko extends Model
     public function categoria(){
         return $this->belongsTo(Categoria::class);
     }
+
+    //Obtener todas los funkos por categorias
+    public static function getFunkosPorCategoria($categoria){
+        return self::where('categoria_id', $categoria)->isDeleted()->get();
+    }
 }

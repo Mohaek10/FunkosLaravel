@@ -21,6 +21,9 @@ class CategoriaController extends Controller
             flash('El id no es válido')->error()->important();
             return redirect()->back();
         }
+        //Buscar todos los funkos de la categoria
+
+
         $categoria = Categoria::find($id);
         return view('categorias.show')->with('categoria', $categoria);
     }
